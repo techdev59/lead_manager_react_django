@@ -58,8 +58,11 @@ def main():
     testsuite.set('failures', '0')
     testsuite.set('time','0.2')
     properties = obj_xml.Element('properties')
-    propert_y = parseString(
-        '<property name="browser.fullName" value="Node.js (linux; U; rv:v6.9.1) AppleWebKit/537.36 (KHTML, like Gecko)"/>').getElementsByTagName('property')[0]
+    propert_y = obj_xml.Element('property')
+    propert_y.set('name', 'browser.fullName')
+    propert_y.set('value','test_1')
+      # parseString(
+        #'<property name="browser.fullName" value="Node.js (linux; U; rv:v6.9.1) AppleWebKit/537.36 (KHTML, like Gecko)"/>').getElementsByTagName('property')[0]
     properties.append(propert_y)
     testsuite.append(properties)
     i =0
