@@ -1,6 +1,7 @@
 import os
 import json
 from xml.dom.minidom import parseString
+import xml.etree.ElementTree as obj_xml
 #from .leadmanager.leads.utils import filter_leads
 
 
@@ -50,9 +51,30 @@ def main():
         ],
     }
     xml = '<?xml version="1.0"?><testsuite name="Node.js (linux; U; rv:v6.9.1) AppleWebKit/537.36 (KHTML, like Gecko)" package="unit" timestamp="2017-04-12T21:08:42" id="0" hostname="2c29b2a64693" tests="8" errors="0" failures="0" time="0.29"><properties><property name="browser.fullName" value="Node.js (linux; U; rv:v6.9.1) AppleWebKit/537.36 (KHTML, like Gecko)"/></properties><testcase name="CountryList should exist" time="0" classname="unit.CountryList"/><testcase name="Check Rendered List check number of rows that are rendered" time="0.017" classname="unit.Check Rendered List"/><testcase name="Main should exist" time="0.001" classname="unit.Main"/><testcase name="Check Functions check if the filter works" time="0.093" classname="unit.Check Functions"/><testcase name="Check Functions check empty search" time="0.061" classname="unit.Check Functions"/><testcase name="Search should exist" time="0.001" classname="unit.Search"/><testcase name="Check Search check if search bar works (case-sensitive)" time="0.071" classname="unit.Check Search"/><testcase name="Check Search check if search bar works (case-insensitive)" time="0.046" classname="unit.Check Search"/><system-err/></testsuite>'
-    xml_dom = parseString(xml)
+    testsuite = obj_xml.Element('testsuite')
+    testsuite.setAttribute('name','Test Name')
+    testsuite.setAttribute('tests',str(total))
+    testsuite.setAttribute('errors', '0')
+    testsuite.setAttribute('failures', '0')
+    testsuite.setAttribute('time','0.2')
+    properties = obj_xml.Element('properties')
+    propert_y = parseString(
+        '<property name="browser.fullName" value="Node.js (linux; U; rv:v6.9.1) AppleWebKit/537.36 (KHTML, like Gecko)"/>')
+    properties.append(propert_y)
+    testsuite.append(properties)
+    i =0
+    for result, success in test_case_results:
+        test_case = obj_xml.Element('testcase')
+        test_case.setAttribute('name', f'test case {i}')
+        test_case.setAttribute('time','0')
+        testsuite.append(test_case)
+        i+=1
+    testsuite.append(obj_xml.Element('system-err'))
+    #xml_dom = parseString(xml)
     with open('result.xml', 'w') as result_file:
-        result_file.write(xml_dom.toxml())
+        xml_tree = obj_xml.ElementTree(testsuite)
+        xml_tree.write(result_file, encoding='unicode')
+        result_file.close()
 
 
 if __name__ == '__main__':
