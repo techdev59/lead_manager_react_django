@@ -1,5 +1,6 @@
 import os
 import json
+from xml.dom.minidom import parse
 #from .leadmanager.leads.utils import filter_leads
 
 
@@ -48,19 +49,7 @@ def main():
             for result, success in test_case_results
         ],
     }
-    output = """
-    <?xml version="1.0" encoding="utf-8"?>
-<assemblies timestamp="01/25/2018 18:32:09">
-  <assembly name="/home/ubuntu/fullstack/project/tests/bin/Debug/netcoreapp2.0/tests.dll" run-date="2018-01-25" run-time="18:32:09" total="4" passed="2" failed="2" skipped="0" time="0.011" errors="0">
-    <errors />
-    <collection total="1" passed="1" failed="0" skipped="0" name="Test collection for Tests.UnitTest1" time="0.011">
-      <test name="Tests.UnitTest1.Test1" type="Tests.UnitTest1" method="Test1" time="0.0110000" result="Pass">
-        <traits />
-      </test>
-      </collection>
-  </assembly>
-</assemblies>
-    """
+    output = '<?xml version="1.0"?><testsuite name="Node.js (linux; U; rv:v6.9.1) AppleWebKit/537.36 (KHTML, like Gecko)" package="unit" timestamp="2017-04-12T21:08:42" id="0" hostname="2c29b2a64693" tests="8" errors="0" failures="0" time="0.29"><properties><property name="browser.fullName" value="Node.js (linux; U; rv:v6.9.1) AppleWebKit/537.36 (KHTML, like Gecko)"/></properties><testcase name="CountryList should exist" time="0" classname="unit.CountryList"/><testcase name="Check Rendered List check number of rows that are rendered" time="0.017" classname="unit.Check Rendered List"/><testcase name="Main should exist" time="0.001" classname="unit.Main"/><testcase name="Check Functions check if the filter works" time="0.093" classname="unit.Check Functions"/><testcase name="Check Functions check empty search" time="0.061" classname="unit.Check Functions"/><testcase name="Search should exist" time="0.001" classname="unit.Search"/><testcase name="Check Search check if search bar works (case-sensitive)" time="0.071" classname="unit.Check Search"/><testcase name="Check Search check if search bar works (case-insensitive)" time="0.046" classname="unit.Check Search"/><system-err/></testsuite>'
     with open('result.xml', 'w') as result_file:
         json.dump(output, result_file)
 
