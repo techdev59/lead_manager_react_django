@@ -59,7 +59,7 @@ def main():
     testsuite.set('time','0.2')
     properties = obj_xml.Element('properties')
     propert_y = parseString(
-        '<property name="browser.fullName" value="Node.js (linux; U; rv:v6.9.1) AppleWebKit/537.36 (KHTML, like Gecko)"/>')
+        '<property name="browser.fullName" value="Node.js (linux; U; rv:v6.9.1) AppleWebKit/537.36 (KHTML, like Gecko)"/>').getElementsByTagName('property')[0]
     properties.append(propert_y)
     testsuite.append(properties)
     i =0
