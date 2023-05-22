@@ -1,6 +1,6 @@
 import os
 import json
-from .leadmanager.leads.utils import filter_leads
+#from .leadmanager.leads.utils import filter_leads
 
 
 def load_test_cases():
