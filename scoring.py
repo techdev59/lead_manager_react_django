@@ -51,6 +51,7 @@ def main():
 
     with open('result.json', 'w') as result_file:
         json.dump(output, result_file)
+        result_file.close()
 
 
 if __name__ == '__main__':
