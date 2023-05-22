@@ -2,7 +2,7 @@ version: 1.0
 configuration:
   has_webserver: false
   scoring:
-    command: "python -m pip install -r requirements-dev.txt && python scoring.py"
+    command: "python scoring.py"
     files:
       - result.json
   ide_config:
