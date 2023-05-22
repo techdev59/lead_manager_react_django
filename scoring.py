@@ -48,8 +48,20 @@ def main():
             for result, success in test_case_results
         ],
     }
-
-    with open('result.json', 'w') as result_file:
+    output = """
+    <?xml version="1.0" encoding="utf-8"?>
+<assemblies timestamp="01/25/2018 18:32:09">
+  <assembly name="/home/ubuntu/fullstack/project/tests/bin/Debug/netcoreapp2.0/tests.dll" run-date="2018-01-25" run-time="18:32:09" total="4" passed="2" failed="2" skipped="0" time="0.011" errors="0">
+    <errors />
+    <collection total="1" passed="1" failed="0" skipped="0" name="Test collection for Tests.UnitTest1" time="0.011">
+      <test name="Tests.UnitTest1.Test1" type="Tests.UnitTest1" method="Test1" time="0.0110000" result="Pass">
+        <traits />
+      </test>
+      </collection>
+  </assembly>
+</assemblies>
+    """
+    with open('result.xml', 'w') as result_file:
         json.dump(output, result_file)
 
 
