@@ -45,7 +45,7 @@ def main():
         },
         'test_cases': [
             {'metadata': {'result': 'pass' if success else 'fail'}}
-            for result, success in [['Hello World!', True]]#test_case_results
+            for result, success in test_case_results
         ],
     }
 
