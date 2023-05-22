@@ -4,17 +4,17 @@ import json
 
 
 def load_test_cases():
-    # test_cases = []
-    # test_case_files = [f for f in os.listdir(
-    #     'message_tests') if f.endswith('.json')]
+    test_cases = []
+    test_case_files = [f for f in os.listdir(
+        'message_tests') if f.endswith('.json')]
 
-    # for test_case_file in test_case_files:
-    #     with open(os.path.join('message_tests', test_case_file), 'r') as input_file:
-    #         test_case_data = json.load(input_file)
-    #         input_data = test_case_data['input']
-    #         expected_output = test_case_data['expected_output']
-    #         test_cases.append((input_data, expected_output))
-    test_cases = [['Hello World!', 'Hello World!']]
+    for test_case_file in test_case_files:
+        with open(os.path.join('message_tests', test_case_file), 'r') as input_file:
+            test_case_data = json.load(input_file)
+            input_data = test_case_data['input']
+            expected_output = test_case_data['expected_output']
+            test_cases.append((input_data, expected_output))
+   # test_cases = [['Hello World!', 'Hello World!']]
     return test_cases
 
 
