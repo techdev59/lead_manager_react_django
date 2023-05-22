@@ -4,7 +4,7 @@ configuration:
   scoring:
     command: "python scoring.py"
     files:
-      - result.json
+      - result.xml
   ide_config:
     default_open_files:
       - lead_manager_react_django/leadmanager/leads/utils.py
