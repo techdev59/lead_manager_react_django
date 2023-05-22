@@ -1,6 +1,6 @@
 import os
 import json
-from xml.dom.minidom import parse
+from xml.dom.minidom import parseString
 #from .leadmanager.leads.utils import filter_leads
 
 
@@ -49,9 +49,10 @@ def main():
             for result, success in test_case_results
         ],
     }
-    output = '<?xml version="1.0"?><testsuite name="Node.js (linux; U; rv:v6.9.1) AppleWebKit/537.36 (KHTML, like Gecko)" package="unit" timestamp="2017-04-12T21:08:42" id="0" hostname="2c29b2a64693" tests="8" errors="0" failures="0" time="0.29"><properties><property name="browser.fullName" value="Node.js (linux; U; rv:v6.9.1) AppleWebKit/537.36 (KHTML, like Gecko)"/></properties><testcase name="CountryList should exist" time="0" classname="unit.CountryList"/><testcase name="Check Rendered List check number of rows that are rendered" time="0.017" classname="unit.Check Rendered List"/><testcase name="Main should exist" time="0.001" classname="unit.Main"/><testcase name="Check Functions check if the filter works" time="0.093" classname="unit.Check Functions"/><testcase name="Check Functions check empty search" time="0.061" classname="unit.Check Functions"/><testcase name="Search should exist" time="0.001" classname="unit.Search"/><testcase name="Check Search check if search bar works (case-sensitive)" time="0.071" classname="unit.Check Search"/><testcase name="Check Search check if search bar works (case-insensitive)" time="0.046" classname="unit.Check Search"/><system-err/></testsuite>'
+    xml = '<?xml version="1.0"?><testsuite name="Node.js (linux; U; rv:v6.9.1) AppleWebKit/537.36 (KHTML, like Gecko)" package="unit" timestamp="2017-04-12T21:08:42" id="0" hostname="2c29b2a64693" tests="8" errors="0" failures="0" time="0.29"><properties><property name="browser.fullName" value="Node.js (linux; U; rv:v6.9.1) AppleWebKit/537.36 (KHTML, like Gecko)"/></properties><testcase name="CountryList should exist" time="0" classname="unit.CountryList"/><testcase name="Check Rendered List check number of rows that are rendered" time="0.017" classname="unit.Check Rendered List"/><testcase name="Main should exist" time="0.001" classname="unit.Main"/><testcase name="Check Functions check if the filter works" time="0.093" classname="unit.Check Functions"/><testcase name="Check Functions check empty search" time="0.061" classname="unit.Check Functions"/><testcase name="Search should exist" time="0.001" classname="unit.Search"/><testcase name="Check Search check if search bar works (case-sensitive)" time="0.071" classname="unit.Check Search"/><testcase name="Check Search check if search bar works (case-insensitive)" time="0.046" classname="unit.Check Search"/><system-err/></testsuite>'
+    xml_dom = parseString(xml)
     with open('result.xml', 'w') as result_file:
-        json.dump(output, result_file)
+        result_file.write(xml_dom.toxml())
 
 
 if __name__ == '__main__':
