@@ -1,0 +1,13 @@
+version: 1.0
+configuration:
+  has_webserver: false
+  scoring:
+    command: "python -m pip install -r requirements-dev.txt && python scoring.py"
+    files:
+      - result.json
+  ide_config:
+    default_open_files:
+      - lead_manager_react_django/leadmanager/leads/utils.py
+    project_menu:
+      install: python -m pip install -r requirements-dev.txt
+      test: python scoring.py
