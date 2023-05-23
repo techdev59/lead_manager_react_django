@@ -2,7 +2,7 @@ version: 1.0
 configuration:
   has_webserver: true
   scoring:
-    command: "rm -rf result.xml; pipenv install && cd leadmanager && pipenv run python manage.py makemigrations && pipenv run python manage.py migrate --run-syncdb && pipenv run python manage.py test"
+    command: "sudo apt install -y build-essential libssl-dev libffi-dev python3-dev libjpeg-dev libjpeg8-dev && sudo apt install libpq-dev && sudo apt-get install python3-pip && rm -rf result.xml; pipenv install && cd leadmanager && pipenv run python manage.py makemigrations && pipenv run python manage.py migrate --run-syncdb && pipenv run python manage.py test"
     files:
       - result.xml
     # Define hidden test cases and declare file paths below to evaluate candidates' submissions.
@@ -17,6 +17,6 @@ configuration:
     default_open_files:
       - leadmanager/leads/models.py
     project_menu:
-      run: cd leadmanager && pipenv run python manage.py makemigrations && pipenv run python manage.py migrate --run-syncdb && pipenv run python manage.py runserver 0.0.0.0:8000
-      install: pipenv install
-      test: rm -rf result.xml; cd leadmanager && pipenv run python manage.py makemigrations && pipenv run python manage.py migrate --run-syncdb && pipenv run python manage.py test --keepdb
+      run: sudo apt install -y build-essential libssl-dev libffi-dev python3-dev libjpeg-dev libjpeg8-dev && sudo apt install libpq-dev && sudo apt-get install python3-pip && cd leadmanager && pipenv run python manage.py makemigrations && pipenv run python manage.py migrate --run-syncdb && pipenv run python manage.py runserver 0.0.0.0:8000
+      install: sudo apt install -y build-essential libssl-dev libffi-dev python3-dev libjpeg-dev libjpeg8-dev && sudo apt install libpq-dev && sudo apt-get install python3-pip && pipenv install
+      test: sudo apt install -y build-essential libssl-dev libffi-dev python3-dev libjpeg-dev libjpeg8-dev && sudo apt install libpq-dev && sudo apt-get install python3-pip && rm -rf result.xml; cd leadmanager && pipenv run python manage.py makemigrations && pipenv run python manage.py migrate --run-syncdb && pipenv run python manage.py test --keepdb
