@@ -2,7 +2,7 @@ version: 1.0
 configuration:
   has_webserver: true
   scoring:
-    command: "rm -rf result.xml; pipenv install && pipenv run python manage.py makemigrations && pipenv run python manage.py migrate --run-syncdb && pipenv run python manage.py test"
+    command: "rm -rf result.xml; pipenv install && cd leadmanager && pipenv run python manage.py makemigrations && pipenv run python manage.py migrate --run-syncdb && pipenv run python manage.py test"
     files:
       - result.xml
     # Define hidden test cases and declare file paths below to evaluate candidates' submissions.
@@ -17,6 +17,6 @@ configuration:
     default_open_files:
       - leadmanager/leads/models.py
     project_menu:
-      run: pipenv run python manage.py makemigrations && pipenv run python manage.py migrate --run-syncdb && pipenv run python manage.py runserver 0.0.0.0:8000
+      run: cd leadmanager && pipenv run python manage.py makemigrations && pipenv run python manage.py migrate --run-syncdb && pipenv run python manage.py runserver 0.0.0.0:8000
       install: pipenv install
-      test: rm -rf result.xml; pipenv run python manage.py makemigrations && pipenv run python manage.py migrate --run-syncdb && pipenv run python manage.py test --keepdb
+      test: rm -rf result.xml; cd leadmanager && pipenv run python manage.py makemigrations && pipenv run python manage.py migrate --run-syncdb && pipenv run python manage.py test --keepdb
