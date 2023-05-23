@@ -18,5 +18,5 @@ configuration:
       - leadmanager/leads/models.py
     project_menu:
       run: cd leadmanager && pipenv run python manage.py makemigrations && pipenv run python manage.py migrate --run-syncdb && pipenv run python manage.py runserver 0.0.0.0:8000
-      install:  pipenv install
+      install:  pipenv shell && pipenv install
       test: rm -rf result.xml; && pipenv run python leadmanager/manage.py makemigrations && pipenv run python leadmanager/manage.py migrate --run-syncdb && python scoring.py 

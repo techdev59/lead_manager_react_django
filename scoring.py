@@ -2,7 +2,7 @@ import os
 import json
 from xml.dom.minidom import parseString
 import xml.etree.ElementTree as obj_xml
-#from .leadmanager.leads.utils import filter_leads
+from .leadmanager.leads.utils import filter_leads
 
 
 def load_test_cases():
@@ -25,7 +25,7 @@ def run_test_cases():
     results = []
 
     for input_data, expected_output in test_cases:
-        result = 'Hello World!'  # filter_leads(input_data)
+        result = filter_leads(**input_data)
         results.append((result, result == expected_output))
 
     return results

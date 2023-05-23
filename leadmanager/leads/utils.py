@@ -1,4 +1,4 @@
 from .models import Lead
 
-def filter_leads():
-    return 'Hello World!'
+def filter_leads(name, email):
+    return []
